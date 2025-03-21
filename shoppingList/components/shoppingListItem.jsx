@@ -1,5 +1,5 @@
 function ListItem({item}){
-    return (<li>{item}</li>)
+    return (<li className="list-item">{item}</li>)
 }
 
 export default ListItem;

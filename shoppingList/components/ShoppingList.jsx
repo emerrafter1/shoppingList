@@ -1,19 +1,19 @@
 import ListItem from "./shoppingListItem";
+import Adder from "./Adder";
+import { useState } from "react";
 
 function ShoppingList() {
-  const items = ["bread", "milk"];
+  const [items, setItems] = useState(["bread", "milk"]);
 
   return (
-    <ul id="shopping-list">
-      {items.map((item, i) => {
-        return (
-          <ListItem
-            key={`shopping-list-item-${i}`}
-            item={item}
-          />
-        );
-      })}
-    </ul>
+    <section className="shopping-list">
+      <ul>
+        {items.map((item, i) => {
+          return <ListItem key={`shopping-list-item-${i}`} item={item} />;
+        })}
+      </ul>
+      <Adder setItems={setItems} items={items}/>
+    </section>
   );
 }
 

@@ -26,7 +26,7 @@ function Adder({ setItems, items }) {
         onChange={handleInputChange}
       />
 
-      <button>Add item</button>
+      <button className="add-item-button">+ Add item</button>
     </form>
   );
 }

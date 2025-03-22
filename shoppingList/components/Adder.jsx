@@ -24,6 +24,7 @@ function Adder({ setItems, items }) {
         id="add-list-item"
         value={addedItem}
         onChange={handleInputChange}
+        className="add-item-input"
       />
 
       <button className="add-item-button">+ Add item</button>

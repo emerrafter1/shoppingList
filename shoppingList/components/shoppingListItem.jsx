@@ -1,5 +1,18 @@
+import { useState } from "react";
+
+
 function ListItem({item}){
-    return (<li className="list-item">{item}</li>)
+
+    const [itemCheck, setItemCheck] = useState(false)
+
+    function handleItemCheck(){
+        setItemCheck(!itemCheck)
+    }
+
+    
+
+
+    return (<li className="list-item"><button onClick={handleItemCheck} className={itemCheck ? "list-item-ticked" : "list-item-unticked"}>{itemCheck ? "✔" : "-"}</button><span className={`list-item-text ${itemCheck ? "strikethrough" : ""}`}>{item}</span></li>)
 }
 
 export default ListItem;

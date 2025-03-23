@@ -25,17 +25,17 @@ h1 {
 }
 
 .list-item {
-  display: grid;
+  display: flex;
   grid-template-columns: auto 1fr auto;
   text-align: left;
-  display: grid;
-  gap: 20px;
-  margin:10px;
 
+  gap: 20px;
+  margin: 10px;
 }
 
 ul {
   list-style-type: none;
+  padding-inline-start: 0px;
 }
 
 form {
@@ -49,12 +49,9 @@ input {
   background-color: #ecfad5;
 }
 
-
-
 button {
-color: #1e5631;
+  color: #1e5631;
   background-color: #a4de02;
-
 }
 
 select {
@@ -128,7 +125,7 @@ select {
   background: none;
   border: none;
   cursor: pointer;
-  color:#1e5631;
+  color: #1e5631;
 }
 
 option {
@@ -172,7 +169,6 @@ h3 {
 
 h2 {
   margin: 0px;
-
 }
 
 /* lightestblue: #e3f1ff
@@ -184,6 +180,13 @@ label {
   text-align: left;
 }
 
-.hide{
+.hide {
   color: white;
+}
+
+.test {
+  margin-left: auto; /* pushes this container to the far right */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

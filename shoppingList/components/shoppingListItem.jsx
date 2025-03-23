@@ -18,10 +18,17 @@ function ListItem({ item, onEdit }) {
       <span className={`list-item-text ${itemCheck ? "strikethrough" : ""}`}>
         {item.itemName}
       </span>
-      <span className={`list-item-text ${itemCheck ? "strikethrough" : ""}`} >{item.quantity}</span>
-      <button className={`edit-button ${itemCheck ? "hide" : ""}`} disabled={itemCheck} onClick={onEdit}>
+      <div className="test">
+      <span className={`list-item-text ${itemCheck ? "strikethrough" : ""}`}>
+        {item.quantity}
+      </span>
+      <button
+        className={`edit-button ${itemCheck ? "hide" : ""}`}
+        disabled={itemCheck}
+        onClick={onEdit}
+      >
         ✎
-      </button>
+      </button></div>
     </li>
   );
 }

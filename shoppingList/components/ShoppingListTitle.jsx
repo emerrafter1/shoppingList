@@ -24,14 +24,16 @@ function ShoppingListTitle() {
   return (
     <div className="shopping-list-title">
       {isEditingListName ? (
-        <input
-        className="edit-list-name"
-          type="text"
-          value={listName}
-          onChange={handleInputChange}
-          onBlur={handleBlurChange}
-          onKeyDown={handleKeyDown}
-        ></input>
+        <div className="shopping-list-title-row">
+          <input
+            className="edit-list-name"
+            type="text"
+            value={listName}
+            onChange={handleInputChange}
+            onBlur={handleBlurChange}
+            onKeyDown={handleKeyDown}
+          ></input>
+        </div>
       ) : (
         <div className="shopping-list-title-row">
           <h2>{listName}</h2>

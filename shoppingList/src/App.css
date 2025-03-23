@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -18,6 +25,7 @@ body {
   border: 1px solid green;
   background-color: white;
   padding: 20px;
+  border-radius: 8px;
 }
 
 .list-item {
@@ -45,8 +53,18 @@ input {
   border: 1px solid black;
 }
 
-.add-item-input {
+input {
   padding: 10px;
+}
+
+select {
+  padding:10px;
+}
+
+
+.add-item-input-error {
+
+  color: red;
 }
 
 .list-item-ticked {
@@ -80,4 +98,39 @@ input {
 
 .strikethrough {
   text-decoration: line-through;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  border:1px solid red;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px;
+}
+
+.modal-close {
+ 
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }

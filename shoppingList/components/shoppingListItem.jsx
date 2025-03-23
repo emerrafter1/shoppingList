@@ -12,7 +12,8 @@ function ListItem({item}){
     
 
 
-    return (<li className="list-item"><button onClick={handleItemCheck} className={itemCheck ? "list-item-ticked" : "list-item-unticked"}>{itemCheck ? "✔" : "-"}</button><span className={`list-item-text ${itemCheck ? "strikethrough" : ""}`}>{item}</span></li>)
+    return (<li className="list-item"><button onClick={handleItemCheck} className={itemCheck ? "list-item-ticked" : "list-item-unticked"}>{itemCheck ? "✔" : "-"}</button><span className={`list-item-text ${itemCheck ? "strikethrough" : ""}`}>{item.itemName}</span><span>
+        <em>{item.category}</em></span></li>)
 }
 
 export default ListItem;

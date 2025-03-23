@@ -1,33 +1,63 @@
 import { useState } from "react";
 
-function Adder({ setItems, items }) {
-  const [addedItem, setAddedItem] = useState("");
+function Adder({ setItems, items, onClose }) {
+  const [addedItem, setAddedItem] = useState({ itemName: "", category: "" });
+  const [addItemError, setAddItemError] = useState(false);
 
   function handleAddItem(event) {
     event.preventDefault();
 
-    const updatedItems = [...items, `${addedItem}`];
+    if (addedItem.itemName.trim() === "") {
+      return setAddItemError(true);
+    }
 
+    const updatedItems = [...items, addedItem];
     setItems(updatedItems);
-    setAddedItem("");
+
+    setAddedItem({ itemName: "", category: "" });
+    setAddItemError(false);
+    onClose(); // ✅ close modal on success
   }
 
   function handleInputChange(event) {
-    setAddedItem(event.target.value);
+    setAddedItem({ ...addedItem, itemName: event.target.value });
+  }
+
+  function handleSelectChange(event) {
+    setAddedItem({ ...addedItem, category: event.target.value });
   }
 
   return (
     <form onSubmit={handleAddItem}>
-      <label htmlFor="add-list-item"></label>
+      <label htmlFor="add-list-item">Item</label>
       <input
         type="text"
         id="add-list-item"
-        value={addedItem}
+        value={addedItem.itemName}
         onChange={handleInputChange}
         className="add-item-input"
       />
+      {addItemError && (
+        <em className="add-item-input-error">Please enter an item</em>
+      )}
 
-      <button className="add-item-button">+ Add item</button>
+      <label htmlFor="category">Category</label>
+      <select
+        id="category"
+        value={addedItem.category}
+        onChange={handleSelectChange}
+      >
+        <option value="">--Please choose an option--</option>
+        <option value="Carbohydrates">Carbohydrates</option>
+        <option value="Protein">Protein</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Fruit and vegetables">Fruit and vegetables</option>
+        <option value="Fats and sugars">Fats and sugars</option>
+      </select>
+
+      <button type="submit" className="add-item-button">
+        + Add to shopping list
+      </button>
     </form>
   );
 }

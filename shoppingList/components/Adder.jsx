@@ -49,7 +49,12 @@ function Adder({ setItems, items, onClose, itemToEdit }) {
   }
 
   function handleQuantityInput(event) {
-    setAddedItem({ ...addedItem, quantity: Number(event.target.value) });
+    const inputValue = event.target.value;
+
+    setAddedItem({
+      ...addedItem,
+      quantity: Math.max(1, Number(inputValue)),
+    });
   }
 
   return (

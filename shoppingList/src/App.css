@@ -10,10 +10,15 @@ body {
 }
 
 * {
+  color: #1e5631;
+}
+
+h1 {
+  color: #1e5631;
 }
 
 .shopping-list {
-  border: 4px solid #89bff8;
+  border: 4px solid #ecfad5;
   background-color: white;
   padding-bottom: 10px;
   border-radius: 8px;
@@ -40,12 +45,18 @@ form {
 input {
   background-color: lightgrey;
   padding: 10px;
+  background-color: #ecfad5;
 }
 
 .add-item-button {
-  border: 1px solid black;
-  background-color: #1b75be;
-  color: white;
+
+
+
+}
+
+button {
+  color: #1e5631;
+  background-color: #a4de02;
 }
 
 select {
@@ -58,16 +69,18 @@ select {
 
 .list-item-ticked {
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid white;
   width: 50px;
   height: 50px;
   color: white;
-  background-color: lightgreen;
+  background-color: #a4de02;
 }
 
 .list-item-unticked {
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid #a4de02;
+  background-color: white;
+  color: #a4de02;
   width: 50px;
   height: 50px;
 }
@@ -124,7 +137,7 @@ option {
 }
 
 h3 {
-  background-color: #89bff8;
+  background-color: #ecfad5;
 }
 
 .shopping-list-title {
@@ -142,13 +155,11 @@ h3 {
 }
 
 .edit-list-name {
-
   border: none;
   font-size: 1.5em;
   font-weight: bold;
-  background-color: #e3f1ff;
+  background-color: #ecfad5;
   text-decoration: underline;
-
 }
 
 .shopping-list-title-row {
@@ -157,10 +168,12 @@ h3 {
   align-items: center;
   gap: 0.5rem; /* optional space between title and button */
   text-align: left;
+  margin: 10px;
 }
 
 h2 {
   margin: 0px;
+
 }
 
 /* lightestblue: #e3f1ff

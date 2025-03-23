@@ -6,8 +6,8 @@ import ShoppingListTitle from "../components/ShoppingListTitle";
 
 function ShoppingList() {
   const [items, setItems] = useState([
-    { itemName: "bread", category: "Carbohydrates" },
-    { itemName: "milk", category: "Dairy" },
+    { itemName: "bread", category: "Carbohydrates", quantity: 3},
+    { itemName: "milk", category: "Dairy", quantity:1 },
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);

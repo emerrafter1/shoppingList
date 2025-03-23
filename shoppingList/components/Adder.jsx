@@ -1,7 +1,11 @@
 import { useState } from "react";
 
 function Adder({ setItems, items, onClose }) {
-  const [addedItem, setAddedItem] = useState({ itemName: "", category: "" });
+  const [addedItem, setAddedItem] = useState({
+    itemName: "",
+    category: "",
+    quantity: 1,
+  });
   const [addItemError, setAddItemError] = useState(false);
 
   function handleAddItem(event) {
@@ -14,7 +18,7 @@ function Adder({ setItems, items, onClose }) {
     const updatedItems = [...items, addedItem];
     setItems(updatedItems);
 
-    setAddedItem({ itemName: "", category: "" });
+    setAddedItem({ itemName: "", category: "", quantity: 1 });
     setAddItemError(false);
     onClose(); // ✅ close modal on success
   }
@@ -25,6 +29,11 @@ function Adder({ setItems, items, onClose }) {
 
   function handleSelectChange(event) {
     setAddedItem({ ...addedItem, category: event.target.value });
+  }
+
+  function handleQuantityInput(event){
+    setAddedItem({ ...addedItem, quantity: event.target.value });
+
   }
 
   return (
@@ -47,14 +56,24 @@ function Adder({ setItems, items, onClose }) {
         value={addedItem.category}
         onChange={handleSelectChange}
       >
-        <option value="">-- Please choose an option --</option>
-        <option value="Carbohydrates">Carbohydrates</option>
-        <option value="Protein">Protein</option>
+        <option value="">-- Category --</option>
+        <option value="Carbohydrate">Carbohydrates</option>
+        <option value="Protein">Proteins</option>
         <option value="Dairy">Dairy</option>
         <option value="Fruit and vegetables">Fruit and vegetables</option>
         <option value="Fats and sugars">Fats and sugars</option>
         <option value="Other">Other</option>
       </select>
+      <label for="quantity">Quantity</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        value={addedItem.quantiy}
+        min="1"
+        placeholder="1"
+        onChange={handleQuantityInput}
+      ></input>
 
       <button type="submit" className="add-item-button">
         + Add to shopping list

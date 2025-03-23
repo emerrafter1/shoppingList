@@ -47,12 +47,13 @@ function Adder({ setItems, items, onClose }) {
         value={addedItem.category}
         onChange={handleSelectChange}
       >
-        <option value="">--Please choose an option--</option>
+        <option value="">-- Please choose an option --</option>
         <option value="Carbohydrates">Carbohydrates</option>
         <option value="Protein">Protein</option>
         <option value="Dairy">Dairy</option>
         <option value="Fruit and vegetables">Fruit and vegetables</option>
         <option value="Fats and sugars">Fats and sugars</option>
+        <option value="Other">Other</option>
       </select>
 
       <button type="submit" className="add-item-button">

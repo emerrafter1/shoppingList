@@ -12,15 +12,31 @@ function ShoppingList() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const groupedCategories = items.reduce((categories, item) => {
+    const key = item.category || "Other";
+    if (!categories[key]) {
+      categories[key] = [];
+    }
+    categories[key].push(item);
+    return categories;
+  }, {});
+
   return (
     <section className="shopping-list">
       <ShoppingListTitle />
 
-      <ul>
-        {items.map((item, i) => {
-          return <ListItem key={`shopping-list-item-${i}`} item={item} />;
-        })}
-      </ul>
+      
+      {Object.entries(groupedCategories).map(([category, items]) => (
+        <div key={category} className="category-section">
+          <h3 className="category-heading">{category}</h3>
+          <ul>
+            {items.map((item, i) => (
+              <ListItem key={`item-${category}-${i}`} item={item} />
+            ))}
+          </ul>
+        </div>
+      ))}
+
 
       <button className="add-item-button" onClick={() => setIsModalOpen(true)}>
         + Add item

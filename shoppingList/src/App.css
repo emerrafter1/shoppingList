@@ -13,7 +13,7 @@
 }
 
 body {
-  background-color: lightyellow;
+  background-color: white;
 }
 
 * {
@@ -22,13 +22,15 @@ body {
 }
 
 .shopping-list {
-  border: 1px solid green;
+  border: 4px solid lightblue;
   background-color: white;
-  padding: 20px;
+  padding-bottom: 10px;
   border-radius: 8px;
 }
 
 .list-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   text-align: left;
   display:grid;
   gap: 20px;
@@ -51,6 +53,7 @@ input {
 
 .add-item-button {
   border: 1px solid black;
+  background-color: lightblue;
 }
 
 input {
@@ -133,4 +136,12 @@ select {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+option { 
+  padding: 10px;
+}
+
+h3 {
+  background-color: lightblue;
 }

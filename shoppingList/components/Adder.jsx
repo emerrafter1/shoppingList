@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Adder({ setItems, items, onClose }) {
+function Adder({ setItems, items, onClose, itemToEdit }) {
   const [addedItem, setAddedItem] = useState({
     itemName: "",
     category: "",
     quantity: 1,
   });
+
   const [addItemError, setAddItemError] = useState(false);
+
+  // ✅ Prefill form when editing
+  useEffect(() => {
+    if (itemToEdit) {
+      setAddedItem(itemToEdit);
+    } else {
+      setAddedItem({ itemName: "", category: "", quantity: 1 });
+    }
+  }, [itemToEdit]);
 
   function handleAddItem(event) {
     event.preventDefault();
@@ -15,12 +25,19 @@ function Adder({ setItems, items, onClose }) {
       return setAddItemError(true);
     }
 
-    const updatedItems = [...items, addedItem];
-    setItems(updatedItems);
+    let updatedItems;
+    if (itemToEdit) {
+      updatedItems = items.map((item) =>
+        item === itemToEdit ? addedItem : item
+      );
+    } else {
+      updatedItems = [...items, addedItem];
+    }
 
+    setItems(updatedItems);
     setAddedItem({ itemName: "", category: "", quantity: 1 });
     setAddItemError(false);
-    onClose(); // ✅ close modal on success
+    onClose();
   }
 
   function handleInputChange(event) {
@@ -31,9 +48,8 @@ function Adder({ setItems, items, onClose }) {
     setAddedItem({ ...addedItem, category: event.target.value });
   }
 
-  function handleQuantityInput(event){
-    setAddedItem({ ...addedItem, quantity: event.target.value });
-
+  function handleQuantityInput(event) {
+    setAddedItem({ ...addedItem, quantity: Number(event.target.value) });
   }
 
   return (
@@ -64,19 +80,20 @@ function Adder({ setItems, items, onClose }) {
         <option value="Fats and sugars">Fats and sugars</option>
         <option value="Other">Other</option>
       </select>
-      <label for="quantity">Quantity</label>
+
+      <label htmlFor="quantity">Quantity</label>
       <input
         type="number"
         id="quantity"
         name="quantity"
-        value={addedItem.quantiy}
+        value={addedItem.quantity}
         min="1"
         placeholder="1"
         onChange={handleQuantityInput}
-      ></input>
+      />
 
       <button type="submit" className="add-item-button">
-        + Add to shopping list
+        {itemToEdit ? "Update item" : "+ Add to shopping list"}
       </button>
     </form>
   );
